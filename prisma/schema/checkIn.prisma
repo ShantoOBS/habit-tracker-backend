@@ -1,0 +1,15 @@
+model CheckIn {
+  id        String   @id @default(cuid())
+
+  habitId   String
+  habit     Habit    @relation(fields: [habitId], references: [id], onDelete: Cascade)
+
+  date      DateTime
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([habitId, date])
+  @@index([habitId])
+  @@map("check_in")
+}
