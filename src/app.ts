@@ -1,6 +1,6 @@
 import express, { Application, Request, Response } from "express";
-import { notFound } from "./middleware/notFound";
-import { IndexRoutes } from "./routes";
+import { notFound } from "./app/middleware/notFound";
+import { IndexRoutes } from "./app/routes";
 
 const app: Application = express();
 
