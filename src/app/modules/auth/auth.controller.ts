@@ -2,13 +2,20 @@ import { Request, Response } from "express";
 import { catchAsync } from "../../shared/catchAsync";
 import { sendResponse } from "../../shared/sendResponse";
 import { AuthService } from "./auth.service";
+import { tokenUtils } from "../../utils/token";
 
 const registerUser = catchAsync(
     async (req: Request, res: Response) => {
-        
+
         const payload = req.body;
 
         const result = await AuthService.registerUser(payload);
+
+        const { accessToken, refreshToken, token,  } = result
+
+        tokenUtils.setAccessTokenCookie(res, accessToken);
+        tokenUtils.setRefreshTokenCookie(res, refreshToken);
+        tokenUtils.setBetterAuthSessionCookie(res, token as string);
 
         sendResponse(res, {
             httpStatusCode: 201,
@@ -23,6 +30,13 @@ const loginUser = catchAsync(
     async (req: Request, res: Response) => {
         const payload = req.body;
         const result = await AuthService.loginUser(payload);
+        
+        const { accessToken, refreshToken, token,  } = result
+
+        tokenUtils.setAccessTokenCookie(res, accessToken);
+        tokenUtils.setRefreshTokenCookie(res, refreshToken);
+        tokenUtils.setBetterAuthSessionCookie(res, token as string);
+
         sendResponse(res, {
             httpStatusCode: 200,
             success: true,
