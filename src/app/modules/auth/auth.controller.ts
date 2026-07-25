@@ -76,7 +76,10 @@ const getAllUsers = catchAsync(
 
 const userStatusUpdate = catchAsync(
     async (req: Request, res: Response) => {
-        const userId = req.params.userId as string;
+
+        console.log("Request body:", req.body);
+
+        const {userId} = req.body;
         const status = req.body.status as UserStatus;
 
         const result = await AuthService.userStatusUpdate(userId, status);

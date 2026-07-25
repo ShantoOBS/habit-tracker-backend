@@ -130,6 +130,7 @@ const getAllUsers = async () => {
 }
 
 const userStatusUpdate = async (userId: string, status: UserStatus) => {
+    console.log("Updating user status:", { userId, status });
     const data = await prisma.user.update({
         where: {
             id: userId,
