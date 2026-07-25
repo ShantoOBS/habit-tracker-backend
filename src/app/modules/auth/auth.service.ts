@@ -1,5 +1,6 @@
 import { UserStatus } from "../../../generated/prisma/enums";
 import { auth } from "../../lib/auth";
+import { prisma } from "../../lib/prisma";
 import { tokenUtils } from "../../utils/token";
 
 interface IRegisterUserPayload {
@@ -101,7 +102,49 @@ const loginUser = async (payload: ILoginUserPayload) => {
 
 }
 
+const getMe = async (userId: string) => {
+    const data = await prisma.user.findUnique({
+        where: {
+            id: userId,
+        },
+        include: {
+            habits: {
+                include: {
+                    checkIns: true,
+                }
+            }
+        }
+    });
+
+    if (!data) {
+        throw new Error("User not found");
+    }
+
+    return data;
+};
+
+const getAllUsers = async () => {
+    const data = await prisma.user.findMany();
+
+    return data;
+}
+
+const userStatusUpdate = async (userId: string, status: UserStatus) => {
+    const data = await prisma.user.update({
+        where: {
+            id: userId,
+        },
+        data: {
+            status: status,
+        }
+    });
+    return data;
+};
+
 export const AuthService = {
     registerUser,
     loginUser,
+    getMe,
+    getAllUsers,
+    userStatusUpdate,
 };
