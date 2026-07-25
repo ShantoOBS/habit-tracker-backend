@@ -4,7 +4,8 @@ model CheckIn {
   habitId   String
   habit     Habit    @relation(fields: [habitId], references: [id], onDelete: Cascade)
 
-  date      DateTime
+  date      String 
+  completed Boolean  @default(false)
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
