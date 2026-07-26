@@ -1,11 +1,11 @@
 import { JwtPayload } from "jsonwebtoken";
-import { UserStatus } from "../../../generated/prisma/enums";
-import AppError from "../../errorHelpers/AppError";
-import { auth } from "../../lib/auth";
-import { prisma } from "../../lib/prisma";
-import { tokenUtils } from "../../utils/token";
-import { envVars } from "../../config/env";
-import { jwtUtils } from "../../utils/jwt";
+import { UserStatus } from "../../../generated/prisma/enums.js";
+import AppError from "../../errorHelpers/AppError.js";
+import { auth } from "../../lib/auth.js";
+import { prisma } from "../../lib/prisma.js";
+import { tokenUtils } from "../../utils/token.js";
+import { envVars } from "../../config/env.js";
+import { jwtUtils } from "../../utils/jwt.js";
 import status from "http-status";
 
 interface IRegisterUserPayload {

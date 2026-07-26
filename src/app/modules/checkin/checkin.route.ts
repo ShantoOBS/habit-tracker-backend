@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { CheckInController } from "./checkin.controller";
+import { CheckInController } from "./checkin.controller.js";
 
 
 

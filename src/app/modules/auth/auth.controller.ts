@@ -1,12 +1,12 @@
 import { Request, Response } from "express";
-import { catchAsync } from "../../shared/catchAsync";
-import { sendResponse } from "../../shared/sendResponse";
-import { AuthService } from "./auth.service";
-import { tokenUtils } from "../../utils/token";
-import { UserStatus } from "../../../generated/prisma/browser";
-import AppError from "../../errorHelpers/AppError";
+import { catchAsync } from "../../shared/catchAsync.js";
+import { sendResponse } from "../../shared/sendResponse.js";
+import { AuthService } from "./auth.service.js";
+import { tokenUtils } from "../../utils/token.js";
+import { UserStatus } from "../../../generated/prisma/browser.js";
+import AppError from "../../errorHelpers/AppError.js";
 import status from "http-status";
-import { CookieUtils } from "../../utils/cookie";
+import { CookieUtils } from "../../utils/cookie.js";
 
 
 const registerUser = catchAsync(

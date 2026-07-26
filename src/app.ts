@@ -1,8 +1,9 @@
 import express, { Application, Request, Response } from "express";
-import { notFound } from "./app/middleware/notFound";
-import { IndexRoutes } from "./app/routes";
+import { notFound } from "./app/middleware/notFound.js";
+
 import cookieParser from "cookie-parser";
-import { globalErrorHandler } from "./app/middleware/globalErrorHandler";
+import { globalErrorHandler } from "./app/middleware/globalErrorHandler.js";
+import { IndexRoutes } from "./app/routes/index.js";
 
 const app: Application = express();
 
@@ -10,7 +11,8 @@ const app: Application = express();
 app.use(express.json());
 app.use(cookieParser())
 
-app.use("/api/v1", IndexRoutes);
+app.use("/api/v1",IndexRoutes);
+
 
 // Basic route
 app.get('/', async (req: Request, res: Response) => {

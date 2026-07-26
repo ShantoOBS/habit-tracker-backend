@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
-import { catchAsync } from "../../shared/catchAsync";
-import { HabitService } from "./habit.service";
-import { sendResponse } from "../../shared/sendResponse";
+import { catchAsync } from "../../shared/catchAsync.js";
+import { HabitService } from "./habit.service.js";
+import { sendResponse } from "../../shared/sendResponse.js";
 
 const createHabit = catchAsync(
     async (req: Request, res: Response) => {

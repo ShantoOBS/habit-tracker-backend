@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
-import { catchAsync } from "../../shared/catchAsync";
-import { CheckInService } from "./checkin.service";
-import { sendResponse } from "../../shared/sendResponse";
+import { catchAsync } from "../../shared/catchAsync.js";
+import { CheckInService } from "./checkin.service.js";
+import { sendResponse } from "../../shared/sendResponse.js";
 
 
 const toggleCheckIn = catchAsync(async (req: Request, res: Response) => {

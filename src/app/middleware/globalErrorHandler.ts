@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { NextFunction, Request, Response } from "express";
 import status from "http-status";
-import { envVars } from "../config/env";
-import AppError from "../errorHelpers/AppError";
-import { TErrorResponse, TErrorSources } from "../interfaces/error.interface";
+import { envVars } from "../config/env.js";
+import AppError from "../errorHelpers/AppError.js";
+import { TErrorResponse, TErrorSources } from "../interfaces/error.interface.js";
 
 
 

@@ -1,7 +1,7 @@
 import { Router } from "express";
-import { AuthRoutes } from "../modules/auth/auth.route";
-import { HabitRoutes } from "../modules/habit/habit.route";
-import { CheckInRoutes } from "../modules/checkin/checkin.route";
+import { AuthRoutes } from "../modules/auth/auth.route.js";
+import { HabitRoutes } from "../modules/habit/habit.route.js";
+import { CheckInRoutes } from "../modules/checkin/checkin.route.js";
 
 const router = Router();
 
