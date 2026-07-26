@@ -36,8 +36,16 @@ const toggleCheckIn = async (habitId: string) => {
 const checkInUpdate =async (habitId: string, date: string) => {
 
 
+ const checkIn = await prisma.checkIn.findUnique({
+    where: {
+      habitId_date: {
+        habitId,
+        date: date,
+      },
+    },
+  });
 
-
+  if (!checkIn) {
     return prisma.checkIn.create({
       data: {
         habitId,
@@ -45,7 +53,16 @@ const checkInUpdate =async (habitId: string, date: string) => {
         completed: true,
       },
     });
-  
+  }
+
+  return prisma.checkIn.update({
+    where: {
+      id: checkIn.id,
+    },
+    data: {
+      completed: !checkIn.completed,
+    },
+  });
 
 
   
