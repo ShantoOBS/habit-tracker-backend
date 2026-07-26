@@ -81,7 +81,7 @@ const getAllUsers = catchAsync(
 const userStatusUpdate = catchAsync(
     async (req: Request, res: Response) => {
 
-        console.log("Request body:", req.body);
+      
 
         const {userId} = req.body;
         const status = req.body.status as UserStatus;

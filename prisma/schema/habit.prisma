@@ -1,6 +1,6 @@
 model Habit {
   id          String   @id @default(cuid())
-  title       String
+  title       String   @unique
   description String?
   archived    Boolean  @default(false)
 

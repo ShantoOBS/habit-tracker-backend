@@ -37,7 +37,7 @@ interface UpdateHabitPayload {
 
 const habitUpdate = async (habitId: string,
      payload: Partial<UpdateHabitPayload>) => {
-    console.log(habitId);
+   
     return prisma.habit.update({
         where: {    
         id: habitId
