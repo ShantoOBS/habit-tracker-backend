@@ -5,20 +5,26 @@ import { sendResponse } from "../../shared/sendResponse.js";
 
 const createHabit = catchAsync(
     async (req: Request, res: Response) => {
+        const { userId, title, description } = req.body as {
+            userId?: string;
+            title?: string;
+            description?: string;
+        };
 
-          const payload = {...req.body}
+        const result = await HabitService.createHabit({
+            userId: userId ?? "",
+            title: title ?? "",
+            description,
+        });
 
-          const result= await HabitService.createHabit(payload);
-
-         sendResponse(res, {
+        sendResponse(res, {
             httpStatusCode: 201,
             success: true,
-            message: 'Habit created successfully',
-            data: result
+            message: "Habit created successfully",
+            data: result,
         });
-    }
-    
-)
+    },
+);
 
 const getAllHabits = catchAsync(
     async (req: Request, res: Response) => {

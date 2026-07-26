@@ -33,6 +33,25 @@ const toggleCheckIn = async (habitId: string) => {
   });
 };
 
+const checkInUpdate =async (habitId: string, date: string) => {
+
+
+
+
+    return prisma.checkIn.create({
+      data: {
+        habitId,
+        date: date,
+        completed: true,
+      },
+    });
+  
+
+
+  
+};
+
+
 
 const getCurrentStreak = (dates: string[]) => {
   if (!dates.length) return 0;
@@ -175,7 +194,8 @@ const getHabitDetails = async (habitId: string) => {
 export const CheckInService = {
     toggleCheckIn,
     getHomeView,
-    getHabitDetails
+    getHabitDetails,
+    checkInUpdate
 
   
 };

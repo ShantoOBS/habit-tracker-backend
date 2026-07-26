@@ -1,6 +1,6 @@
 model Habit {
   id          String   @id @default(cuid())
-  title       String   @unique
+  title       String
   description String?
   archived    Boolean  @default(false)
 
@@ -12,6 +12,7 @@ model Habit {
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 
+  @@unique([userId, title])
   @@index([userId])
   @@index([archived])
   @@index([userId, archived])

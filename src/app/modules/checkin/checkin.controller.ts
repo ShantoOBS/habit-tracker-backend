@@ -40,8 +40,23 @@ const getHabitDetails = catchAsync(async (req: Request, res: Response) => {
   });
 });
 
+const checkInUpdate=catchAsync(async (req: Request, res: Response) => {
+   
+  console.log(req.body.date)
+  const result = await CheckInService.checkInUpdate(req.params.habitId as string,req.body.date as string);
+
+  sendResponse(res, {
+    httpStatusCode: 200,
+    success: true,
+    message: "CheckIn upadate successfully",
+    data: result,
+  });
+});
+
+
 export const CheckInController = {
   toggleCheckIn,
   getHomeView,
-  getHabitDetails
+  getHabitDetails,
+  checkInUpdate
 };

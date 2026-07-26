@@ -1,3 +1,6 @@
+import status from "http-status";
+
+import AppError from "../../errorHelpers/AppError.js";
 import { prisma } from "../../lib/prisma.js";
 
 interface CreateHabitPayload {
@@ -7,8 +10,31 @@ interface CreateHabitPayload {
 }
 
 const createHabit = async (payload: CreateHabitPayload) => {
+    const title = payload.title?.trim();
+    if (!payload.userId || !title) {
+        throw new AppError(status.BAD_REQUEST, "userId and title are required");
+    }
+
+    const user = await prisma.user.findUnique({
+        where: { id: payload.userId },
+        select: { id: true },
+    });
+
+    if (!user) {
+        throw new AppError(
+            status.UNAUTHORIZED,
+            "Invalid session. Please sign in again.",
+        );
+    }
+
+   
+
     return prisma.habit.create({
-        data: payload
+        data: {
+            userId: payload.userId,
+            title,
+            description: payload.description?.trim() || null,
+        },
     });
 };
 
