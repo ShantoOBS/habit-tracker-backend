@@ -1,5 +1,7 @@
 # Habit Tracker Backend
 
+Live Link : https://habit-tracker-backend-beige.vercel.app/
+
 ## Overview
 
 This repository contains the backend API for a habit tracker application built with Node.js, TypeScript, Express, and Prisma. It includes authentication, habit management, and check-in tracking.
